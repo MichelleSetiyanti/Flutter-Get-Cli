@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:test_cli/app/routes/app_pages.dart';
 
 import '../controllers/products_controller.dart';
+import './product_item_view.dart';
 
 class ProductsView extends GetView<ProductsController> {
   // final ProductsController productC = Get.find();
@@ -16,11 +17,8 @@ class ProductsView extends GetView<ProductsController> {
       ),
       body: Obx(
         () => ListView.builder(
-          itemBuilder: (context, index) => ListTile(
-            title: Text(
-              controller.allProducts[index]["name"],
-              // productC.allProducts[index]["name"],
-            ),
+          itemBuilder: (context, index) => ProductItem(
+            controller.allProducts[index],
           ),
           itemCount: controller.allProducts.length,
           // itemCount: productC.allProducts.length,
